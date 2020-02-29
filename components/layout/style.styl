@@ -1,0 +1,51 @@
+css-setting()
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+.layout
+  &::before
+    css-setting()
+    width: 500px
+    height: 500px
+    z-index: -3
+    top: 300px
+    left: -150px
+    background: #E6B0AA
+  .layout-top
+    width: 100%
+    height: 25px
+    background-color: #D6DBDF 
+    &::before
+      css-setting()
+      width: 300px
+      height: 300px
+      z-index: -2
+      top: -100px
+      right: 0px
+      background: #D1F2EB
+  .layout-middle
+    width: 100%
+    height: 25px
+    background-color: #E5E8E8
+    margin-bottom: 40px
+    &::before
+      css-setting()
+      width: 1400px
+      height: 1400px
+      z-index: -4
+      top: -1000px
+      left: -700px
+      background: #FCF3CF
+  .layout-bottom
+    color: rgba(255, 255, 255, 0.15)
+    padding-top: 8px
+    font-size: 32px
+    text-align: center
+    width: 100%
+    height: 80px
+    background-color: #566573
+    margin-top: 40px

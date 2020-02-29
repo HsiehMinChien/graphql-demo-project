@@ -1,6 +1,5 @@
 import React from "react";
 import { Checkbox as AntdCheckBox, Modal } from "antd";
-// import "./style.styl";
 import { Job, Tag } from "../../graphql/generate_file";
 
 type DisplayTagsPropsType = {
@@ -41,7 +40,7 @@ const CheckboxModal = ({
   return (
     <Modal
       className="checkbox"
-      title="Modal"
+      title="Select Types"
       visible={isVisible}
       onOk={_handleClickOk}
       onCancel={onClickCancel}

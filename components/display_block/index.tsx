@@ -11,10 +11,10 @@ function displayInfo(
   isDate: boolean = false
 ) {
   let output = "";
-  if (isDate) {
-    output = value ? value.substring(0, 10) : "N/A";
-  }
   output = value ? value : "N/A";
+  if (isDate) {
+    output = value ? value.substr(0, 10) : "N/A";
+  }
   return output;
 }
 

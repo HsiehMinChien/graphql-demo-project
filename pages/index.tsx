@@ -13,7 +13,6 @@ function Home() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [selectedTypes, setSelectedTypes] = useState<Array<string>>([]);
   function _handleClcikOk(values: Array<string>) {
-    console.log(values);
     setSelectedTypes(values);
     setIsVisible(false);
   }

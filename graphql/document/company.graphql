@@ -1,0 +1,28 @@
+fragment Country on Country {
+  id
+  name
+  slug
+  type
+  isoCode
+  cities {
+    ...City
+  }
+  # jobs {
+  #   ...jobs
+  # }
+  createdAt
+  updatedAt
+}
+
+fragment Company on Company {
+  id
+  name
+  slug
+  websiteUrl
+  logoUrl
+  # jobs
+  twitter
+  emailed
+  createdAt
+  updatedAt
+}

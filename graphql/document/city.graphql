@@ -1,0 +1,20 @@
+fragment City on City {
+  id
+  name
+  slug
+  # country {
+  #   ...Country
+  # }
+  type
+  # jobs {
+  #   ...Job
+  # }
+  createdAt
+  updatedAt
+}
+
+query GetCities {
+  cities {
+    ...City
+  }
+}

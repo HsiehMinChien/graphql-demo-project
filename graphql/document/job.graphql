@@ -1,0 +1,78 @@
+fragment Tag on Tag {
+  id
+  name
+  slug
+  # jobs {
+  #   ...Job
+  # }
+  createdAt
+  updatedAt
+}
+
+fragment Commitment on Commitment {
+  id
+  title
+  slug
+  # jobs {
+  #   ...Job
+  # }
+  createdAt
+  updatedAt
+}
+
+fragment Remote on Remote {
+  id
+  name
+  slug
+  type
+  # jobs {
+  #   ...Job
+  # }
+  createdAt
+  updatedAt
+}
+
+fragment Job on Job {
+  id
+  title
+  slug
+  commitment {
+    ...Commitment
+  }
+  cities {
+    ...City
+  }
+  countries {
+    ...Country
+  }
+  remotes {
+    ...Remote
+  }
+  description
+  applyUrl
+  company {
+    ...Company
+  }
+  tags {
+    ...Tag
+  }
+  isPublished
+  isFeatured
+  locationNames
+  userEmail
+  postedAt
+  createdAt
+  updatedAt
+}
+
+query GetJob($companySlug: String!, $jobSlug: String!) {
+  job(input: { companySlug: $companySlug, jobSlug: $jobSlug }) {
+    ...Job
+  }
+}
+
+query GetJobs {
+  jobs {
+    ...Job
+  }
+}

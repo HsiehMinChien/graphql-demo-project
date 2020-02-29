@@ -2,8 +2,9 @@ import React from "react";
 import cx from "classnames";
 import { Button } from "antd";
 import Tags from "../tags";
+import { Job, Tag } from "../../graphql/generate_file";
+import { confirmIsSelected } from "../utils";
 import "./style.styl";
-import { Job } from "../../graphql/generate_file";
 
 function displayInfo(
   value: string | null | undefined,
@@ -17,7 +18,40 @@ function displayInfo(
   return output;
 }
 
-const DisplayBlock = ({ title, locationNames, updatedAt, tags }: Job) => {
+type DisplayBlockPropsType = {
+  selectedTypes: Array<string>;
+} & Job;
+
+function confirmShouldRenderItem(
+  tags: Tag[] | null | undefined,
+  selectedTypes: Array<string>
+) {
+  const hasSelectedType = Boolean(selectedTypes.length);
+
+  if (!hasSelectedType) {
+    return true;
+  }
+
+  let shouldRenderItem = false;
+  tags &&
+    tags.forEach(tag => {
+      if (confirmIsSelected(tag.name, selectedTypes)) {
+        shouldRenderItem = true;
+      }
+    });
+  return shouldRenderItem;
+}
+
+const DisplayBlock = ({
+  title,
+  locationNames,
+  updatedAt,
+  tags,
+  selectedTypes = []
+}: DisplayBlockPropsType) => {
+  if (!confirmShouldRenderItem(tags, selectedTypes)) {
+    return null;
+  }
   return (
     <div className={cx("display-block")}>
       <Button
@@ -39,7 +73,7 @@ const DisplayBlock = ({ title, locationNames, updatedAt, tags }: Job) => {
         {displayInfo(updatedAt, true)}
       </div>
       <div className="tags">
-        <Tags tags={tags} />
+        <Tags tags={tags} selectedTypes={selectedTypes} />
       </div>
     </div>
   );

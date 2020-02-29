@@ -1,15 +1,39 @@
-.page-section-title
+css-setting($bgcolor)
+  position: relative
   margin-left: 20%
-  &::before
-    content: "";
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    z-index: -1;
-    top: 51px;
-    left: 17.5%;
-    background: #4dc9ff;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+  .page-section-title
+    &::before
+      content: "";
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      z-index: -1;
+      top: -7px;
+      left: -3%;
+      background: $bgcolor;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+.page-job-select-type
+  css-setting(#ABEBC6)
+  margin-bottom: 30px
+  .ant-btn
+    margin-left: 4%
+    position: absolute
+    top: 11px;
+    right: 23%;
+  .selected-types
+    margin-left: 4%
+    margin-right: 20%
+    display: flex
+    flex-wrap: wrap
+    > div
+      padding: 5px 10px
+      margin: 5px
+      background-color: #E8F8F5
+      border-radius: 10%
+
+.page-jobs-list
+  css-setting(#4dc9ff)

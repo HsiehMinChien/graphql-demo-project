@@ -1,23 +1,28 @@
 import React from "react";
 import cx from "classnames";
-import "./style.styl";
 import { Tag } from "../../graphql/generate_file";
+import { confirmIsSelected } from "../utils";
+import "./style.styl";
 
 type DisplayTagsPropsType = {
   tags: Array<Tag> | null | undefined;
+  selectedTypes: Array<string>;
 };
 
-const DisplayTags = ({ tags = [] }: DisplayTagsPropsType) => {
-  const message = "notice";
+const DisplayTags = ({
+  tags = [],
+  selectedTypes = []
+}: DisplayTagsPropsType) => {
   return (
-    <div className="tags">
+    <div className="display-tags">
       {tags &&
         tags.map((tag: Tag, index: number) => {
-          if (index > 5) {
-            return null;
-          }
+          const isSelected = confirmIsSelected(tag.name, selectedTypes);
           return (
-            <div key={tag.name + index} className={cx("tag", message)}>
+            <div
+              key={tag.name + index}
+              className={cx("tag", { selected: isSelected })}
+            >
               {tag.name}
             </div>
           );

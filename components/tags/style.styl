@@ -1,9 +1,15 @@
-.tags
+.display-tags
   display: flex
+  flex-wrap: wrap
+  margin: 5px 5px 0 5px
   .tag
     padding: 5px 10px
     margin: 0px 10px
     background-color: #eeeeee
     border-radius: 5px
+    margin-bottom: 10px
     &:first-child
       margin-left: 0
+    &.selected
+      background-color: #EC7063
+      color: #ffffff

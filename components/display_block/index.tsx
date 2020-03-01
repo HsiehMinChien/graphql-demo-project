@@ -34,12 +34,11 @@ function confirmShouldRenderItem(
   }
 
   let shouldRenderItem = false;
-  tags &&
-    tags.forEach(tag => {
-      if (confirmIsSelected(tag.name, selectedTypes)) {
-        shouldRenderItem = true;
-      }
-    });
+  tags?.forEach(tag => {
+    if (confirmIsSelected(tag.name, selectedTypes)) {
+      shouldRenderItem = true;
+    }
+  });
   return shouldRenderItem;
 }
 
@@ -55,12 +54,11 @@ const DisplayBlock = ({
   if (!confirmShouldRenderItem(tags, selectedTypes)) {
     return null;
   }
-  const companySlug = company ? company.slug : "";
   return (
     <div className={cx("display-block")}>
       <Link
         href="/detail/[jobSlug]/[companySlug]"
-        as={`/detail/${slug}/${companySlug}`}
+        as={`/detail/${slug}/${company?.slug}`}
       >
         <Button
           className="lightsalmon"
@@ -68,7 +66,7 @@ const DisplayBlock = ({
           shape="round"
           type="primary"
         >
-          More detail
+          Detail
         </Button>
       </Link>
       <div className="title">

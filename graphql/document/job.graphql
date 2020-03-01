@@ -65,6 +65,19 @@ fragment Job on Job {
   updatedAt
 }
 
+fragment Jobs on Job {
+  updatedAt
+  title
+  slug
+  locationNames
+  tags {
+    name
+  }
+  company {
+    slug
+  }
+}
+
 query GetJob($companySlug: String!, $jobSlug: String!) {
   job(input: { companySlug: $companySlug, jobSlug: $jobSlug }) {
     ...Job
@@ -73,6 +86,6 @@ query GetJob($companySlug: String!, $jobSlug: String!) {
 
 query GetJobs {
   jobs {
-    ...Job
+    ...Jobs
   }
 }

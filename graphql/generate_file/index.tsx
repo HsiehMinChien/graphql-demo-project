@@ -1186,6 +1186,18 @@ export type JobFragment = (
   )>> }
 );
 
+export type JobsFragment = (
+  { __typename?: 'Job' }
+  & Pick<Job, 'updatedAt' | 'title' | 'slug' | 'locationNames'>
+  & { tags: Maybe<Array<(
+    { __typename?: 'Tag' }
+    & Pick<Tag, 'name'>
+  )>>, company: Maybe<(
+    { __typename?: 'Company' }
+    & Pick<Company, 'slug'>
+  )> }
+);
+
 export type GetJobQueryVariables = {
   companySlug: Scalars['String'],
   jobSlug: Scalars['String']
@@ -1207,7 +1219,7 @@ export type GetJobsQuery = (
   { __typename?: 'Query' }
   & { jobs: Array<(
     { __typename?: 'Job' }
-    & JobFragment
+    & JobsFragment
   )> }
 );
 
@@ -1315,6 +1327,20 @@ ${CountryFragmentDoc}
 ${RemoteFragmentDoc}
 ${CompanyFragmentDoc}
 ${TagFragmentDoc}`;
+export const JobsFragmentDoc = gql`
+    fragment Jobs on Job {
+  updatedAt
+  title
+  slug
+  locationNames
+  tags {
+    name
+  }
+  company {
+    slug
+  }
+}
+    `;
 export const GetAllDocument = gql`
     query GetAll {
   cities {
@@ -1393,10 +1419,10 @@ export type GetJobQueryResult = ApolloReactCommon.QueryResult<GetJobQuery, GetJo
 export const GetJobsDocument = gql`
     query GetJobs {
   jobs {
-    ...Job
+    ...Jobs
   }
 }
-    ${JobFragmentDoc}`;
+    ${JobsFragmentDoc}`;
 export type GetJobsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GetJobsQuery, GetJobsQueryVariables>, 'query'>;
 
     export const GetJobsComponent = (props: GetJobsComponentProps) => (
@@ -1743,6 +1769,6 @@ export type Resolvers<ContextType = any> = {
 export type IResolvers<ContextType = any> = Resolvers<ContextType>;
 
 
-// Generated in 2020-02-29T01:59:40+08:00
+// Generated in 2020-03-01T18:44:14+08:00
 
 // Demo for nextjs with typescript graphql redux

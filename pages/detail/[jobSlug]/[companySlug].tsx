@@ -26,17 +26,27 @@ class Detail extends React.Component<DetailPropsType> {
   render() {
     const { query } = this.props;
     return (
-      <Layout>
+      <Layout className="page-detail">
         <Link href="/">
           <LeftCircleFilled />
         </Link>
         <GetJobComponent variables={query}>
           {({ data, loading }) => {
-            if (loading) return <Spin />;
-            console.log(data);
+            if (loading) {
+              return (
+                <div style={{ textAlign: "center" }}>
+                  <Spin size="large" />
+                </div>
+              );
+            }
             return (
-              <div className="page-detail">
-                <a className="apply-link">Apply</a>
+              <div className="page-detail-content">
+                <a
+                  className="apply-link"
+                  href={data?.job.applyUrl ? data?.job.applyUrl : ""}
+                >
+                  Apply
+                </a>
                 <h1>{data?.job.title}</h1>
                 <h4>Location: {data?.job.locationNames}</h4>
                 <h4>Update At: {data?.job.updatedAt.substring(0, 10)}</h4>

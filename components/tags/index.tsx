@@ -21,7 +21,7 @@ const DisplayTags = ({
           return (
             <div
               key={tag.name + index}
-              className={cx("tag", { selected: isSelected })}
+              className={cx("display-tag", { selected: isSelected })}
             >
               {tag.name}
             </div>

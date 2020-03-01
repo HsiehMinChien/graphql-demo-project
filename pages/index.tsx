@@ -21,26 +21,32 @@ function Home() {
     <Layout>
       <GetJobsComponent>
         {({ data, loading }) => {
-          if (loading) return <Spin size="large" />;
+          if (loading) {
+            return (
+              <div style={{ textAlign: "center" }}>
+                <Spin size="large" />
+              </div>
+            );
+          }
           const { jobs = [] } = data as { jobs?: Job[] };
 
           return (
             <>
               <div className="page-job-select-type">
-                <h1 className="page-section-title">Select Job Type</h1>
+                <h1 className="page-section-title">Selected Skill</h1>
                 <Button
                   className="lightsalmon"
                   value="large"
                   onClick={() => setIsVisible(true)}
                 >
-                  Select Types
+                  Select Skill
                 </Button>
                 <div className="selected-types">
                   {selectedTypes.length
                     ? selectedTypes.map((type: string, index: number) => (
                         <div key={index}>{type}</div>
                       ))
-                    : "No selected type"}
+                    : "No selected skill"}
                 </div>
                 <CheckboxModal
                   isVisible={isVisible}

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { compose } from "redux";
 import { Spin, Button } from "antd";
-import withApollo from "../lib/with-apollo";
+import { compose } from "redux";
 import { withRedux } from "../lib/redux";
+import withApollo from "../lib/with-apollo";
 import DisplayBlock from "../components/display_block";
 import CheckboxModal from "../components/checkbox-modal";
 import Layout from "../components/layout";

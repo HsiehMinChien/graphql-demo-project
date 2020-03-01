@@ -13,7 +13,6 @@ const Layout = ({ className, children }: LayoutPropsType) => {
       <div className="layout-top" />
       <div className="layout-middle" />
       {children}
-      <div className="layout-bottom">GraphQL demo project</div>
     </div>
   );
 };

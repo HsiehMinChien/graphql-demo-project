@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { Button } from "antd";
 import Tags from "../tags";
+import Link from "next/link";
 import { Job, Tag } from "../../graphql/generate_file";
 import { confirmIsSelected } from "../utils";
 import "./style.styl";
@@ -44,6 +45,8 @@ function confirmShouldRenderItem(
 
 const DisplayBlock = ({
   title,
+  slug,
+  company,
   locationNames,
   updatedAt,
   tags,
@@ -52,16 +55,22 @@ const DisplayBlock = ({
   if (!confirmShouldRenderItem(tags, selectedTypes)) {
     return null;
   }
+  const companySlug = company ? company.slug : "";
   return (
     <div className={cx("display-block")}>
-      <Button
-        className="lightsalmon"
-        value="large"
-        shape="round"
-        type="primary"
+      <Link
+        href="/detail/[jobSlug]/[companySlug]"
+        as={`/detail/${slug}/${companySlug}`}
       >
-        More detail
-      </Button>
+        <Button
+          className="lightsalmon"
+          value="large"
+          shape="round"
+          type="primary"
+        >
+          More detail
+        </Button>
+      </Link>
       <div className="title">
         <div className="sub-title">Title:</div> {displayInfo(title)}
       </div>

@@ -19,6 +19,9 @@ function Home() {
   }
   return (
     <Layout>
+      <div className="page-top">
+        <h1>Job List Project</h1>
+      </div>
       <GetJobsComponent>
         {({ data, loading }) => {
           if (loading) {

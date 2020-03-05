@@ -7,19 +7,7 @@ type LayoutPropsType = {
 };
 
 const Layout = ({ className, children }: LayoutPropsType) => {
-  return (
-    <div className={cx("all-page-layout", className)}>
-      <div
-        style={{
-          width: "100%",
-          height: "25px",
-          backgroundColor: "#eee",
-          marginBottom: "40px"
-        }}
-      />
-      {children}
-    </div>
-  );
+  return <div className={cx("all-page-layout", className)}>{children}</div>;
 };
 
 export default Layout;

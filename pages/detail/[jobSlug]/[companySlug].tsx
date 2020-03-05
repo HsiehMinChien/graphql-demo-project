@@ -1,8 +1,8 @@
+import React from "react";
 import { compose } from "redux";
+import Link from "next/link";
 import { Spin } from "antd";
 import { LeftCircleFilled } from "@ant-design/icons";
-import React from "react";
-import Link from "next/link";
 import { NextPageContext } from "next";
 import ReactMarkdown from "react-markdown";
 import { withRedux } from "../../../lib/redux";
@@ -19,6 +19,8 @@ type DetailPropsType = {
   };
 };
 
+const PRE_FIX_CLASS = "detail-page";
+
 class Detail extends React.Component<DetailPropsType> {
   static getInitialProps = async ({ query }: NextPageContext) => {
     return { query };
@@ -26,10 +28,8 @@ class Detail extends React.Component<DetailPropsType> {
   render() {
     const { query } = this.props;
     return (
-      <Layout className="page-detail">
-        <Link href="/">
-          <LeftCircleFilled />
-        </Link>
+      <Layout className={PRE_FIX_CLASS}>
+        <div className={`${PRE_FIX_CLASS}-top`} />
         <GetJobComponent variables={query}>
           {({ data, loading }) => {
             if (loading) {
@@ -40,7 +40,10 @@ class Detail extends React.Component<DetailPropsType> {
               );
             }
             return (
-              <div className="page-detail-content">
+              <div className={`${PRE_FIX_CLASS}-content`}>
+                <Link href="/">
+                  <LeftCircleFilled />
+                </Link>
                 <a
                   className="apply-link"
                   href={data?.job.applyUrl ? data?.job.applyUrl : ""}

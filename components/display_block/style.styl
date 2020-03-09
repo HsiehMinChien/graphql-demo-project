@@ -1,44 +1,48 @@
-.display-block
-  position: relative
-  border: 1px solid #eee;
-  background-color: #ffffff
-  margin: 20px 20% 20px 0%;
-  padding-bottom: 20px;
-  padding-top: 20px;
-  padding-left: 20px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  &:hover
-    background-color: #EBEDEF
-    .display-tags
-      .display-tag
-        background-color: #ffffff
-        &.selected
-          background-color: #EC7063
-          color: #ffffff
-  .tags,
-  .updated-at,
-  .location,
-  .title
-    display: flex
-    padding-top: 5px
-    padding-bottom: 5px
-    max-width: 70%
-    .sub-title
-      font-weight: 600
-      margin-right: 10px
-  .tags
-    max-width: 100%
-    .sub-title
-      padding-top: 10px
-      padding-left: 0px
+.ant-row.ant-row-center
+  display: flex
+  justify-content: center
+  flex-flow: row wrap;
+  .display-block
+    position: relative
+    border: 1px solid #eee;
+    background-color: #ffffff
+    margin: 20px 0 20px 0;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    &:hover
+      background-color: #EBEDEF
+      .display-tags
+        .display-tag
+          background-color: #ffffff
+          &.selected
+            background-color: #EC7063
+            color: #ffffff
+    .tags,
+    .updated-at,
+    .location,
+    .title
+      display: flex
+      padding-top: 5px
+      padding-bottom: 5px
+      max-width: 70%
+      .sub-title
+        font-weight: 600
+        margin-right: 10px
+    .tags
+      max-width: 100%
+      .sub-title
+        padding-top: 10px
+        padding-left: 0px
 
-  .title
-    font-size: 18px
+    .title
+      font-size: 18px
 
-  .ant-btn.lightsalmon
-    position: absolute
-    top: 25px
-    right: 4%
-    background-color: #FFA07A
-    border-color: #FFA07A
+    .ant-btn.lightsalmon
+      position: absolute
+      top: 25px
+      right: 4%
+      background-color: #FFA07A
+      border-color: #FFA07A

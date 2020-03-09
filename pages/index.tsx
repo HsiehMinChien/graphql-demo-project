@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Spin, Button } from "antd";
+import { Spin, Button, Row, Col } from "antd";
 import { compose } from "redux";
 import { withRedux } from "../lib/redux";
 import withApollo from "../lib/with-apollo";
@@ -36,21 +36,43 @@ function Home() {
           return (
             <>
               <div className="page-job-select-type">
-                <h1 className="page-section-title">Selected Skill</h1>
-                <Button
-                  className="lightsalmon"
-                  value="large"
-                  onClick={() => setIsVisible(true)}
-                >
-                  Select Skill
-                </Button>
-                <div className="selected-types">
-                  {selectedTypes.length
-                    ? selectedTypes.map((type: string, index: number) => (
-                        <div key={index}>{type}</div>
-                      ))
-                    : "No selected skill"}
-                </div>
+                <Row className="page-section-title">
+                  <Col
+                    className="title"
+                    xs={22}
+                    sm={20}
+                    md={18}
+                    lg={16}
+                    xl={16}
+                    xxl={16}
+                  >
+                    <h1>Selected Skill</h1>
+                    <Button
+                      className="lightsalmon"
+                      value="large"
+                      onClick={() => setIsVisible(true)}
+                    >
+                      Select Skill
+                    </Button>
+                  </Col>
+                  <Col
+                    className="selected-types-container"
+                    xs={22}
+                    sm={20}
+                    md={18}
+                    lg={16}
+                    xl={16}
+                    xxl={16}
+                  >
+                    <div className="selected-types">
+                      {selectedTypes.length
+                        ? selectedTypes.map((type: string, index: number) => (
+                            <div key={index}>{type}</div>
+                          ))
+                        : "No selected skill"}
+                    </div>
+                  </Col>
+                </Row>
                 <CheckboxModal
                   isVisible={isVisible}
                   jobs={jobs}
@@ -59,7 +81,19 @@ function Home() {
                 />
               </div>
               <div className="page-jobs-list">
-                <h1 className="page-section-title">Jobs list</h1>
+                <Row className="page-section-title">
+                  <Col
+                    className="title"
+                    xs={22}
+                    sm={20}
+                    md={18}
+                    lg={16}
+                    xl={16}
+                    xxl={16}
+                  >
+                    <h1>Jobs list</h1>
+                  </Col>
+                </Row>
                 {jobs.map((job: Job, index: number) => (
                   <DisplayBlock
                     key={index}

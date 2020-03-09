@@ -1,32 +1,34 @@
 css-setting($bgcolor)
   position: relative
-  margin-left: 20%
   .page-section-title
-    &::before
-      content: "";
-      width: 50px;
-      height: 50px;
-      position: absolute;
-      z-index: -1;
-      top: -7px;
-      left: -3%;
-      background: $bgcolor;
-      border-radius: 50%;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+    display: flex
+    justify-content: center
+    flex-flow: row wrap
+    > div.title
+      position: relative
+      .ant-btn
+        position: absolute
+        right: 1%
+        top: 5%
+      &::before
+        content: ""
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        z-index: -1;
+        top: -7px;
+        left: -3%;
+        background: $bgcolor;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
 
 .page-job-select-type
   css-setting(#ABEBC6)
   margin-bottom: 30px
-  .ant-btn
-    margin-left: 4%
-    position: absolute
-    top: 4px;
-    right: 20%;
   .selected-types
     margin-left: 4%
-    margin-right: 20%
     display: flex
     flex-wrap: wrap
     > div

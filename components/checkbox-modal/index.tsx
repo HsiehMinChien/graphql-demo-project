@@ -13,13 +13,11 @@ const { Group } = AntdCheckBox;
 
 function getOptions(jobs: Array<Job> | null | undefined): string[] {
   const output = new Set<string>();
-  jobs &&
-    jobs.forEach((job: Job) => {
-      job.tags &&
-        job.tags.forEach((tag: Tag) => {
-          output.add(tag.name);
-        });
+  jobs?.forEach((job: Job) => {
+    job.tags?.forEach((tag: Tag) => {
+      output.add(tag.name);
     });
+  });
   return Array.from<string>(output);
 }
 

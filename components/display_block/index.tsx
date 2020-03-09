@@ -1,6 +1,5 @@
 import React from "react";
-import cx from "classnames";
-import { Button } from "antd";
+import { Button, Row, Col } from "antd";
 import Tags from "../tags";
 import Link from "next/link";
 import { Job, Tag } from "../../graphql/generate_file";
@@ -55,34 +54,45 @@ const DisplayBlock = ({
     return null;
   }
   return (
-    <div className={cx("display-block")}>
-      <Link
-        href="/detail/[jobSlug]/[companySlug]"
-        as={`/detail/${slug}/${company?.slug}`}
+    <Row className="ant-row-center" justify="center">
+      <Col
+        xs={22}
+        sm={20}
+        md={18}
+        lg={16}
+        xl={16}
+        xxl={16}
+        className="display-block"
       >
-        <Button
-          className="lightsalmon"
-          value="large"
-          shape="round"
-          type="primary"
+        <Link
+          href="/detail/[jobSlug]/[companySlug]"
+          as={`/detail/${slug}/${company?.slug}`}
         >
-          Detail
-        </Button>
-      </Link>
-      <div className="title">
-        <div className="sub-title">Title:</div> {displayInfo(title)}
-      </div>
-      <div className="location">
-        <div className="sub-title">Location:</div> {displayInfo(locationNames)}
-      </div>
-      <div className="updated-at">
-        <div className="sub-title">Update at:</div>{" "}
-        {displayInfo(updatedAt, true)}
-      </div>
-      <div className="tags">
-        <Tags tags={tags} selectedTypes={selectedTypes} />
-      </div>
-    </div>
+          <Button
+            className="lightsalmon"
+            value="large"
+            shape="round"
+            type="primary"
+          >
+            Detail
+          </Button>
+        </Link>
+        <div className="title">
+          <div className="sub-title">Title:</div> {displayInfo(title)}
+        </div>
+        <div className="location">
+          <div className="sub-title">Location:</div>{" "}
+          {displayInfo(locationNames)}
+        </div>
+        <div className="updated-at">
+          <div className="sub-title">Update at:</div>{" "}
+          {displayInfo(updatedAt, true)}
+        </div>
+        <div className="tags">
+          <Tags tags={tags} selectedTypes={selectedTypes} />
+        </div>
+      </Col>
+    </Row>
   );
 };
 
